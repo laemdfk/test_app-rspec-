@@ -1,0 +1,22 @@
+<h1>投稿を編集する</h1>
+<%#= form_with model:@list, method: :pacth do |f| %>
+<!--上記コードだと、@listのidが渡せないため、合致するルートを設定できない→→詳細ページに飛ばすときはurlも指定する-->
+
+<%= form_with model: @list, url: list_path(@list.id), method: :patch do |f| %>
+<%= f.label :title, "タイトル" %><br >
+<%= f.text_field :title %><br >
+
+<%= f.label :body,"本文" %><br >
+<%= f.text_area :body %><br >
+
+<%= f.label :image,"画像" %><br >
+<%= f.file_field :image, accept: "image/*" %><br >
+
+<%= f.submit "送信" %>
+
+<div>
+  <%= link_to "戻る",list_path(@list.id) %>
+</div>
+
+<% end %>
+Footer

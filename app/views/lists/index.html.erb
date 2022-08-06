@@ -1,0 +1,22 @@
+<h1>Lists#index</h1>
+
+
+<% @lists.each do |list| %>
+ <div>
+  <p>タイトル</p>
+  <%= link_to list.title, list_path(list.id) %>
+ </div>
+ <div>
+  <p>本文</p>
+   <%= list.body %>
+ </div>
+
+ <div>
+ <% if list.image.attached? %>
+    <%= image_tag list.image, size: "200x200" %>
+  <% else %>
+    <%= image_tag 'noimage.jpg', size: "200x200" %>
+  <% end %>
+ </div>
+<% end %>
+<%= link_to "投稿する", new_list_path %>
